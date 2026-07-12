@@ -1,9 +1,12 @@
-// Hack Club "VERSUS" - Fixed Logic
 const int signalLed = 12; // The "GO" light
 const int p1Led = 8;
 const int p2Led = 9;
-const int p1Button = 7;
-const int p2Button = 4;
+const int p1Button = 2;
+const int p2Button = 3;
+volatile bool p1Pressed = false;
+volatile bool p2Pressed = false;
+volatile unsigned long p1PressTime = 0;
+volatile unsigned long p2PressTime = 0;
 
 void setup() {
   pinMode(signalLed, OUTPUT);
@@ -11,14 +14,26 @@ void setup() {
   pinMode(p2Led, OUTPUT);
   pinMode(p1Button, INPUT_PULLUP);
   pinMode(p2Button, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(p1Button), p1Interrupted, FALLING);
+  attachInterrupt(digitalPinToInterrupt(p2Button), p2Interrupted, FALLING);
   Serial.begin(9600);
   randomSeed(analogRead(0));
-  Serial.println("=== HACK CLUB VERSUS MODE ===");
+  // Serial.println("=== HACK CLUB VERSUS MODE ===");
   Serial.println("Press any button to start...");
 }
 
+void p1Interrupted() {
+  p1PressTime = millis();
+  p1Pressed = true;
+}
+
+void p2Interrupted() {
+  p2PressTime = millis();
+  p2Pressed = true;
+}
+
 void loop() {
-  // 1. Wait for ANY button press to start
+  // 1. Wait for any button press to start
   Serial.println("Waiting for a challenger...");
   while (digitalRead(p1Button) == HIGH && digitalRead(p2Button) == HIGH);
   
@@ -31,7 +46,7 @@ void loop() {
   delay(1000);
   Serial.println("SET...");
   
-  // 3. THE "FOUL DETECTION" WAIT
+  // 3. Foul Detection Wait
   unsigned long waitDuration = random(2000, 5000);
   unsigned long startWait = millis();
   bool foul = false;
@@ -51,25 +66,27 @@ void loop() {
     }
   }
 
-  // 4. THE ACTUAL RACE (only if no foul happened)
+  // 4. Race Check
   if (!foul) {
+    p1Pressed = false;
+    p2Pressed = false;
     digitalWrite(signalLed, HIGH); 
     unsigned long startTime = millis();
     
     while (true) {
-      if (digitalRead(p1Button) == LOW) {
+      if (p1Pressed) {
         digitalWrite(signalLed, LOW); 
         digitalWrite(p1Led, HIGH);
         Serial.print("P1 SPEED: "); 
-        Serial.print(millis() - startTime);
+        Serial.print(p1PressTime - startTime);
         Serial.println("ms");
         break;
       }
-      if (digitalRead(p2Button) == LOW) {
+      if (p2Pressed) {
         digitalWrite(signalLed, LOW); 
         digitalWrite(p2Led, HIGH);
         Serial.print("P2 SPEED: "); 
-        Serial.print(millis() - startTime);
+        Serial.print(p2PressTime - startTime);
         Serial.println("ms");
         break;
       }
