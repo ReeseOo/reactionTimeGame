@@ -2,6 +2,12 @@
 
 A breadboard Arduino game that tests the reaction speed of two players based on who presses their button first. 
 
+
+https://github.com/user-attachments/assets/005c3da3-78fe-4f93-938d-b6cef09952ee
+
+
+
+
 ## How it works
 When an LED goes off, the player who clicks their button first wins the game. Each player has a respective LED to display who won the reaction time game. Interrupt-based detection was used to determine the exact moment the button was pressed to capture the reaction speed, with high accuracy, of the winning player. Polling based detection was used to determine if either button was pressed in order to display the results. 
 
