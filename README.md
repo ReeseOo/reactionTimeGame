@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/005c3da3-78fe-4f93-938d-b6cef09952ee
 
 
 ## How it works
-When an LED goes off, the player who clicks their button first wins the game. Each player has a respective LED to display who won the reaction time game. Interrupt-based detection was used to determine the exact moment the button was pressed to capture the reaction speed, with high accuracy, of the winning player. Polling based detection was used to determine if either button was pressed in order to display the results. 
+When an LED  from the side lights up, the player who clicks their button first wins the game. Each player has a respective LED to display who won the reaction time game. A hardware interrupt on pins D2 and D3 was used to determine the reaction speed, with high accuracy, of the winning player. Polling was used to determine if a hardware interrupt occured, and if it did, the results would be displayed.
 
 ## Notes
-Polling-based detection for the reaction speed would likely have a be less accurate (a marginal difference) compared to interrupt-based. Polling was the intitial way of capturing the reaction speed time, but I decided to switch to interrupts anyway. This was for the sake of a more precise number for player reaction speed numbers. Core logic was made by Gemini AI but had to be debugged by hand and rewritten several times by me.
+Polling-based detection for the reaction speed would likely be less accurate (a marginal difference) compared to interrupt-based. Polling was the initial way of capturing the reaction speed time, but I decided to switch to interrupts anyway. This was for the sake of a more precise number for player reaction speed numbers. Core logic was made by Gemini AI but had to be debugged by hand and rewritten several times by me.
