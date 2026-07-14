@@ -7,8 +7,8 @@ https://github.com/user-attachments/assets/005c3da3-78fe-4f93-938d-b6cef09952ee
 
 
 <p float="left">
-  <img alt="" src="[/path-to-image1.png](https://github.com/user-attachments/assets/a7188ec8-f650-4e83-800b-29839dec3a6f)" width="49%" />
-  <img alt="" src="[/path-to-image2.png](https://github.com/user-attachments/assets/1d963f5b-3c22-474a-aebf-01914379796a)" width="49%" />
+  <img alt="" src="https://github.com/user-attachments/assets/a7188ec8-f650-4e83-800b-29839dec3a6f" width="49%" />
+  <img alt="" src="https://github.com/user-attachments/assets/1d963f5b-3c22-474a-aebf-01914379796a" width="49%" />
 </p>
 
 <img width="877" height="411" alt="reaction time game bread board diagram" src="https://github.com/user-attachments/assets/d2b350df-2d99-4d28-9ea0-7a451252d0b9" />
