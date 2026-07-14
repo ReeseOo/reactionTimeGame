@@ -50,15 +50,17 @@ void loop() {
   unsigned long waitDuration = random(2000, 5000);
   unsigned long startWait = millis();
   bool foul = false;
+  p1Pressed = false;
+  p2Pressed = false;
 
   while (millis() - startWait < waitDuration) {
-    if (digitalRead(p1Button) == LOW) {
+    if (p1Pressed) {
       Serial.println("P1 FOUL! P2 WINS!");
       digitalWrite(p2Led, HIGH);
       foul = true;
       break; 
     }
-    if (digitalRead(p2Button) == LOW) {
+    if (p2Pressed) {
       Serial.println("P2 FOUL! P1 WINS!");
       digitalWrite(p1Led, HIGH);
       foul = true;
@@ -68,8 +70,6 @@ void loop() {
 
   // 4. Race Check
   if (!foul) {
-    p1Pressed = false;
-    p2Pressed = false;
     digitalWrite(signalLed, HIGH); 
     unsigned long startTime = millis();
     
