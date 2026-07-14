@@ -7,6 +7,7 @@ https://github.com/user-attachments/assets/005c3da3-78fe-4f93-938d-b6cef09952ee
 
 ## Circuit
 <img width="877" height="411" alt="reaction time game bread board diagram" src="https://github.com/user-attachments/assets/d2b350df-2d99-4d28-9ea0-7a451252d0b9" />
+
 *Breadboard wiring in Wowki.*
 
 ---
