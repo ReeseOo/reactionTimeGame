@@ -1,6 +1,6 @@
 # reactionTimeGame
 
-A breadboard Arduino game that tests the reaction speed of two players based on who presses their button first. Test the game <a target="_blank" href="https://wokwi.com/projects/469476521715600385">here.</a>
+A breadboard Arduino game that tests the reaction speed of two players based on who presses their button first. Test the game <a href="https://wokwi.com/projects/469476521715600385" target="_blank" rel="noopener noreferrer">here.</a>
 
 
 https://github.com/user-attachments/assets/005c3da3-78fe-4f93-938d-b6cef09952ee
